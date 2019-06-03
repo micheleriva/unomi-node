@@ -5,7 +5,7 @@ import * as ProfileTypes from "./types/profiles";
 
 type AxiosRes = Promise<AxiosResponse>;
 
-export function connect(connectionData: MainTypes.ConnectionData) {
+export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Connection {
   const axiosInterface: AxiosInstance = axios.create({
     baseURL: connectionData.url,
     auth: {
@@ -16,7 +16,8 @@ export function connect(connectionData: MainTypes.ConnectionData) {
 
   return {
     profile: {
-      create: (profileData: ProfileTypes.CreateProperties): AxiosRes => profile.create(axiosInterface, profileData)
+      create: (profileData: ProfileTypes.CreateProperties): AxiosRes => profile.create(axiosInterface, profileData),
+      get:    (profileId: string): AxiosRes => profile.get(axiosInterface, profileId)
     }
   }
 }
