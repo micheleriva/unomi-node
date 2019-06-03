@@ -75,6 +75,13 @@ Example:
 unomi.profile.get("123456");
 ```
 
+### unomi.profile.delete
+Delete a specific profile. <br />
+Example:
+```js
+unomi.profile.delete("123456");
+```
+
 ### unomi.profile.count
 Returns the number of profiles stored in Unomi. <br />
 Example:

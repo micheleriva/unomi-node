@@ -48,8 +48,23 @@ export function get(axios: AxiosInstance, profileId: string): AxiosRes {
   }
 
   return axios.get(`/cxs/profiles/${profileId}`);
-
 }
+
+/**
+ * @function delete
+ * @param {AxiosInterface} axios
+ * @param {string} profileId
+ * @returns {AxiosRes}
+ */
+export function deleteProfile(axios: AxiosInstance, profileId: string): AxiosRes {
+
+  if (!profileId) {
+    throw new Error(`profileId argument is missing, null or undefined.`);
+  }
+
+  return axios.delete(`/cxs/profiles/${profileId}`);
+}
+
 
 /**
  * @function count
@@ -76,7 +91,5 @@ export function existingProperties(axios: AxiosInstance, params: ExistingPropert
     throw new Error(`The following properties are missing, null or undefined: ${propsValidation.missing.join(',')}`);
   }
 
-  const queryString = queryStringify(params);
-
-  return axios.get(`/cxs/profiles/existingProperties?${queryString}`);
+  return axios.get(`/cxs/profiles/existingProperties?${queryStringify({...params})}`);
 }

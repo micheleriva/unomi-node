@@ -15,6 +15,7 @@ export interface Connection {
 export interface ProfileConnection {
   create:             Function;
   get:                Function;
+  delete:             Function;
   count:              Function;
   existingProperties: Function;
 }
