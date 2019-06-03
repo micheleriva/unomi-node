@@ -53,7 +53,7 @@ unomi.profile.create(profile)
 
 ### Profiles
 
-**unomi.profile.create**
+**unomi.profile.create**<br />
 Create a new profile. <br />
 Example:
 
@@ -68,7 +68,7 @@ unomi.profile.create({
 });
 ```
 
-**unomi.profile.get**
+**unomi.profile.get**<br />
 Get a specific profile. <br />
 Example:
 ```js
