@@ -9,3 +9,9 @@ export interface CreateProperties {
   mergedWith:       string;
   consents:         any;
 }
+
+export interface ExistingProperties {
+  itemType:     string;
+  tag:          string;
+  isSystemTag?: boolean;
+}

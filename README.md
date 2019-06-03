@@ -75,5 +75,25 @@ Example:
 unomi.profile.get("123456");
 ```
 
+### unomi.profile.count
+Returns the number of profiles stored in Unomi. <br />
+Example:
+
+```js
+unomi.profile.count();
+```
+
+### unomi.profile.existingProperties
+Returns the existing properties types for the specified type and the specified tag.<br />
+Example:
+
+```js
+unomi.profile.existingProperties({
+  itemType: "profile",
+  tag: "defaultProfile",
+  isSystemTag: false
+})
+```
+
 # License
 [Apache 2.0](/LICENSE.md)

@@ -13,6 +13,8 @@ export interface Connection {
 }
 
 export interface ProfileConnection {
-  create: Function;
-  get:    Function
+  create:             Function;
+  get:                Function;
+  count:              Function;
+  existingProperties: Function;
 }
