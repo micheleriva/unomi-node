@@ -5,7 +5,7 @@
   "main": "./dist/commonjs/index.js",
   "module": "./dist/umd/index.js",
   "author": "Michele Riva <ciao@micheleriva.it>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": false,
   "scripts": {
     "build": "rollup -c",
