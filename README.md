@@ -38,8 +38,8 @@ import { unomi } from "./my-unomi-connection.js";
 const profile = {
   itemId: "237649",
   properties: {
-    "firstName": "John",
-    "lastName":  "Doe"
+    firstName: "John",
+    lastName:  "Doe"
   },
   version: 1
 };
@@ -47,6 +47,32 @@ const profile = {
 unomi.profile.create(profile)
      .then((res)  => console.log(res))
      .catch((err) => console.log(err));
+```
+
+# API
+
+### Profiles
+
+**unomi.profile.create**
+Create a new profile. <br />
+Example:
+
+```js
+unomi.profile.create({
+  itemId: "123456",
+  properties: {
+    firstName: "John",
+    lastName: "Doe"
+  },
+  version: 1
+});
+```
+
+**unomi.profile.get**
+Get a specific profile. <br />
+Example:
+```js
+unomi.profile.get("123456");
 ```
 
 # License
