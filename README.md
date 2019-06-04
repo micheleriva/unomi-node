@@ -1,6 +1,4 @@
-<div align="center>
-  <img src="/docs/logo/unomi.png" align="center" width="350" />
-</div>
+<img src="/docs/logo/unomi.png" align="center" width="350" />
 
 <br />
 <br />
