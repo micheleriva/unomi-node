@@ -1,3 +1,8 @@
+import { AxiosResponse } from "axios";
+import * as ProfileTypes from "./profiles.d";
+
+export type AxiosRes = Promise<AxiosResponse>;
+
 export interface ConnectionData {
   url:  string;
   auth: AuthData;
@@ -13,9 +18,9 @@ export interface Connection {
 }
 
 export interface ProfileConnection {
-  create:             Function;
-  get:                Function;
-  delete:             Function;
-  count:              Function;
-  existingProperties: Function;
+  create:             (profileData: ProfileTypes.CreateProperties) => AxiosRes;
+  get:                (profileId: string) => AxiosRes;
+  delete:             (profileId: string) => AxiosRes;
+  count:              () => AxiosRes;
+  existingProperties: (params: ProfileTypes.ExistingProperties) => AxiosRes;
 }

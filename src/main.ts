@@ -20,7 +20,7 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
       get:    (profileId: string): AxiosRes => profile.get(axiosInterface, profileId),
       delete: (profileId: string): AxiosRes => profile.deleteProfile(axiosInterface, profileId),
       count:  (): AxiosRes => profile.count(axiosInterface),
-      existingProperties: (params: ProfileTypes.ExistingProperties) => profile.existingProperties(axiosInterface, params)
+      existingProperties: (params: ProfileTypes.ExistingProperties): AxiosRes => profile.existingProperties(axiosInterface, params)
     }
   }
 }

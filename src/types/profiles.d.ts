@@ -1,11 +1,13 @@
+import { JsonGenericProperty } from "./generics.d";
+
 export interface CreateProperties {
   itemId:           string | number;
   itemType:         string;
   version:          number;
-  properties:       {[key: string]: string};
-  systemProperties: {[key: string]: string};
+  properties:       JsonGenericProperty;
+  systemProperties: JsonGenericProperty;
   segments:         string[];
-  scores:           {[key: string]: string};
+  scores:           JsonGenericProperty;
   mergedWith:       string;
   consents:         any;
 }
