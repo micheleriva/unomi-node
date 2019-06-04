@@ -1,3 +1,8 @@
+<img src="/docs/logo/unomi.png" align="center" />
+
+<br />
+<br />
+
 # Apache Unomi Node.js SDK
 
 Node.js SDK for the **Apache Unomi CDP**. Work in progress.
