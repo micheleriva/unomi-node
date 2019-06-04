@@ -1,4 +1,4 @@
-<img src="/docs/logo/unomi.png" align="center" width="350" />
+<img src="/unomi.png" align="center" width="350" />
 
 <br />
 
