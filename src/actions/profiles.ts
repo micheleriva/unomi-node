@@ -1,9 +1,8 @@
 import { stringify as queryStringify } from "querystring";
-import { AxiosInstance, AxiosResponse } from "axios";
+import { AxiosInstance } from "axios";
 import { validateRequiredProps } from "../utils/index";
 import { CreateProperties, ExistingProperties } from "../types/profiles";
-
-type AxiosRes = Promise<AxiosResponse<any>>;
+import { AxiosRes } from "../types/main";
 
 const defaultProperties: CreateProperties = {
   itemId:           undefined,

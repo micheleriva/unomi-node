@@ -4,11 +4,12 @@
     "declarationDir": "./dist",
     "module": "es6",
     "noImplicitAny": true,
+    "lib": ["es2017", "es7", "es6", "dom"],
     "outDir": "./dist",
     "target": "es5"
   },
   "include": [
     "src/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

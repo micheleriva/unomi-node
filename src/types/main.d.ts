@@ -5,12 +5,10 @@ export type AxiosRes = Promise<AxiosResponse>;
 
 export interface ConnectionData {
   url:  string;
-  auth: AuthData;
-}
-
-export interface AuthData {
-  username: string;
-  password: string;
+  auth: {
+    username: string;
+    password: string;
+  };
 }
 
 export interface Connection {
