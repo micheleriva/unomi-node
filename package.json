@@ -14,7 +14,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "docs": "typedoc --theme minimal --out docs/typedoc src"
   },
   "dependencies": {
     "axios": "0.19.0"

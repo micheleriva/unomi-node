@@ -1,7 +1,6 @@
 <img src="/docs/logo/unomi.png" align="center" width="350" />
 
 <br />
-<br />
 
 Node.js SDK for the **Apache Unomi CDP**. Work in progress.
 
