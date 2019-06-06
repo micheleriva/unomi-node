@@ -1,6 +1,6 @@
 {
   "name": "unomi-node",
-  "version": "0.0.4-unstable",
+  "version": "0.0.5-unstable",
   "description": "Node.js SDK for the Apache Unomi CDP",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/umd/index.js",
@@ -8,7 +8,6 @@
   "author": "Michele Riva <ciao@micheleriva.it>",
   "license": "Apache-2.0",
   "private": false,
-  "files": ["./src/**/*", "./*.md"],
   "keywords": [
     "unomi",
     "apache",
