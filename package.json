@@ -1,6 +1,6 @@
 {
   "name": "unomi-node",
-  "version": "0.0.3-unstable",
+  "version": "0.0.4-unstable",
   "description": "Node.js SDK for the Apache Unomi CDP",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/umd/index.js",
@@ -8,6 +8,13 @@
   "author": "Michele Riva <ciao@micheleriva.it>",
   "license": "Apache-2.0",
   "private": false,
+  "files": ["./src/**/*", "./*.md"],
+  "keywords": [
+    "unomi",
+    "apache",
+    "CDP",
+    "node-sdk"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/micheleriva/unomi-node"
@@ -15,7 +22,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "docs": "typedoc --out docs src"
+    "docs": "typedoc --out docs src",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "axios": "0.19.0"
@@ -23,6 +31,7 @@
   "devDependencies": {
     "rollup": "^1.13.1",
     "rollup-plugin-typescript2": "^0.21.1",
+    "tslint": "^5.17.0",
     "typescript": "^3.5.1"
   }
 }
