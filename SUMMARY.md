@@ -1,5 +1,9 @@
 # Table of contents
 
-* [README](README.md)
-* [LICENSE](license.md)
+* [Apache Unomi Node.js SDK](README.md)
+
+## API
+
+* [Profiles](api/profiles/README.md)
+  * [Create](api/profiles/create.md)
 
