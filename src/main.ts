@@ -1,10 +1,10 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import * as profile from "./actions/profiles";
+import * as segment from "./actions/segments";
+import * as rule from "./actions/rules";
 import * as MainTypes from "./types/main.d";
 import * as ProfileTypes from "./types/profiles";
-import { SdkResponse, FilteredResponse } from "./types/sdkResponse";
-
-type AxiosRes = Promise<AxiosResponse>;
+import { FilteredResponse } from "./types/sdkResponse";
 
 export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Connection {
   const axiosInterface: AxiosInstance = axios.create({
@@ -22,6 +22,12 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
       delete: (profileId: string): FilteredResponse => profile.deleteProfile(axiosInterface, profileId),
       count:  (): FilteredResponse => profile.count(axiosInterface),
       existingProperties: (params: ProfileTypes.ExistingProperties): FilteredResponse => profile.existingProperties(axiosInterface, params)
+    },
+    segment: {
+      create: (params: object): FilteredResponse => segment.create(axiosInterface, params)
+    },
+    rule: {
+      create: (params: object): FilteredResponse => rule.create(axiosInterface, params)
     }
   }
 }

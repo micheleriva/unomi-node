@@ -13,13 +13,17 @@ export interface ConnectionData {
 }
 
 export interface Connection {
-  profile: ProfileConnection
-}
-
-export interface ProfileConnection {
-  create:             (profileData: ProfileTypes.CreateProperties) => FilteredResponse;
-  get:                (profileId: string) => FilteredResponse;
-  delete:             (profileId: string) => FilteredResponse;
-  count:              () => FilteredResponse;
-  existingProperties: (params: ProfileTypes.ExistingProperties) => FilteredResponse;
+  profile: {
+    create:             (profileData: ProfileTypes.CreateProperties) => FilteredResponse;
+    get:                (profileId: string) => FilteredResponse;
+    delete:             (profileId: string) => FilteredResponse;
+    count:              () => FilteredResponse;
+    existingProperties: (params: ProfileTypes.ExistingProperties) => FilteredResponse;
+  },
+  segment: {
+    create:             (params: object) => FilteredResponse
+  },
+  rule: {
+    create:             (params: object) => FilteredResponse
+  }
 }

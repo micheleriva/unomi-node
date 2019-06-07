@@ -2,8 +2,7 @@ import { stringify as queryStringify } from "querystring";
 import { AxiosInstance } from "axios";
 import { validateRequiredProps, callUnomi } from "../utils/index";
 import { CreateProperties, ExistingProperties } from "../types/profiles";
-import { AxiosRes } from "../types/main";
-import { SdkResponse, FilteredResponse } from "../types/sdkResponse";
+import { FilteredResponse } from "../types/sdkResponse";
 
 const defaultProperties: CreateProperties = {
   itemId:           undefined,

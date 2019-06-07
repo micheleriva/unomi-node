@@ -36,6 +36,7 @@ export function callUnomi(axiosInstance: UtilsTypes.callUnomi, method?: string):
   let validStatus: number;
 
   switch(method) {
+    case "createRule":
     case "deleteProfile":
       validStatus = 204;
       break;
