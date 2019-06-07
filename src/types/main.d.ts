@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import * as ProfileTypes from "./profiles.d";
+import { FilteredResponse } from "./sdkResponse";
 
 export type AxiosRes = Promise<AxiosResponse>;
 
@@ -16,9 +17,9 @@ export interface Connection {
 }
 
 export interface ProfileConnection {
-  create:             (profileData: ProfileTypes.CreateProperties) => AxiosRes;
-  get:                (profileId: string) => AxiosRes;
-  delete:             (profileId: string) => AxiosRes;
-  count:              () => AxiosRes;
-  existingProperties: (params: ProfileTypes.ExistingProperties) => AxiosRes;
+  create:             (profileData: ProfileTypes.CreateProperties) => FilteredResponse;
+  get:                (profileId: string) => FilteredResponse;
+  delete:             (profileId: string) => FilteredResponse;
+  count:              () => FilteredResponse;
+  existingProperties: (params: ProfileTypes.ExistingProperties) => FilteredResponse;
 }

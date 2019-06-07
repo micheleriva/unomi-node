@@ -1,8 +1,9 @@
 import { stringify as queryStringify } from "querystring";
 import { AxiosInstance } from "axios";
-import { validateRequiredProps } from "../utils/index";
+import { validateRequiredProps, callUnomi } from "../utils/index";
 import { CreateProperties, ExistingProperties } from "../types/profiles";
 import { AxiosRes } from "../types/main";
+import { SdkResponse, FilteredResponse } from "../types/sdkResponse";
 
 const defaultProperties: CreateProperties = {
   itemId:           undefined,
@@ -20,10 +21,10 @@ const defaultProperties: CreateProperties = {
  * @function create
  * @param {AxiosInterface} axios
  * @param {CreateProperties} properties
- * @returns {AxiosRes}
+ * @returns {FilteredResponse}
  */
 
-export function create(axios: AxiosInstance, properties: CreateProperties): AxiosRes {
+export function create(axios: AxiosInstance, properties: CreateProperties): FilteredResponse {
   const requiredProperties = ["itemId", "properties"];
   const propsValidation    = validateRequiredProps(requiredProperties, properties);
 
@@ -31,48 +32,48 @@ export function create(axios: AxiosInstance, properties: CreateProperties): Axio
     throw new Error(`The following properties are missing, null or undefined: ${propsValidation.missing.join(',')}`);
   }
 
-  return axios.post(`/cxs/profiles`, Object.assign(defaultProperties, properties));
+  return callUnomi(() => axios.post(`/cxs/profiles`, Object.assign(defaultProperties, properties)));
 }
 
 /**
  * @function get
  * @param {AxiosInterface} axios
  * @param {string} profileId
- * @returns {AxiosRes}
+ * @returns {FilteredResponse}
  */
-export function get(axios: AxiosInstance, profileId: string): AxiosRes {
+export function get(axios: AxiosInstance, profileId: string): FilteredResponse {
 
   if (!profileId) {
     throw new Error(`profileId argument is missing, null or undefined.`);
   }
 
-  return axios.get(`/cxs/profiles/${profileId}`);
+  return callUnomi(() => axios.get(`/cxs/profiles/${profileId}`));
 }
 
 /**
  * @function delete
  * @param {AxiosInterface} axios
  * @param {string} profileId
- * @returns {AxiosRes}
+ * @returns {FilteredResponse}
  */
-export function deleteProfile(axios: AxiosInstance, profileId: string): AxiosRes {
+export function deleteProfile(axios: AxiosInstance, profileId: string): FilteredResponse {
 
   if (!profileId) {
     throw new Error(`profileId argument is missing, null or undefined.`);
   }
 
-  return axios.delete(`/cxs/profiles/${profileId}`);
+  return callUnomi(() =>axios.delete(`/cxs/profiles/${profileId}`), "deleteProfile");
 }
 
 
 /**
  * @function count
  * @param {AxiosInterface} axios
- * @returns {AxiosRes}
+ * @returns {FilteredResponse}
  */
 
-export function count(axios: AxiosInstance): AxiosRes {
-  return axios.get(`/csx/profiles/count`);
+export function count(axios: AxiosInstance): FilteredResponse {
+  return callUnomi(() => axios.get(`/cxs/profiles/count`));
 }
 
 /**
@@ -82,7 +83,7 @@ export function count(axios: AxiosInstance): AxiosRes {
  * @returns {AxiosRes}
  */
 
-export function existingProperties(axios: AxiosInstance, params: ExistingProperties): AxiosRes {
+export function existingProperties(axios: AxiosInstance, params: ExistingProperties): FilteredResponse {
   const requiredProperties = ["tag", "itemType"];
   const propsValidation    = validateRequiredProps(requiredProperties, params);
 
@@ -90,5 +91,5 @@ export function existingProperties(axios: AxiosInstance, params: ExistingPropert
     throw new Error(`The following properties are missing, null or undefined: ${propsValidation.missing.join(',')}`);
   }
 
-  return axios.get(`/cxs/profiles/existingProperties?${queryStringify({...params})}`);
+  return callUnomi(() => axios.get(`/cxs/profiles/existingProperties?${queryStringify({...params})}`));
 }
