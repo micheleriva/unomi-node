@@ -1,10 +1,4 @@
----
-description: >-
-  Node.js SDK for the Apache Unomi Customer Data Platform. Still a work in
-  progress
----
-
-# Apache Unomi Node.js SDK
+![unomi.png](https://micheleriva.gitbook.io/unomi-node/)
 
 ### Getting Stared
 
