@@ -1,4 +1,8 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Apache Unomi Node.js SDK](README.md)
+
+## API
+
+* [Profiles](api/profiles.md)
 
