@@ -28,7 +28,8 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
     },
     rule: {
       create: (params: object): FilteredResponse => rule.create(axiosInterface, params),
-      getAll: (): FilteredResponse => rule.getAll(axiosInterface)
+      getAll: (): FilteredResponse => rule.getAll(axiosInterface),
+      get:    (param: string) => rule.get(axiosInterface, param)
     }
   }
 }

@@ -20,3 +20,7 @@ export function create(axios: AxiosInstance, properties: object): FilteredRespon
 export function getAll(axios: AxiosInstance): FilteredResponse {
   return callUnomi(() => axios.get(`/cxs/rules`));
 }
+
+export function get(axios: AxiosInstance, rule: string): FilteredResponse {
+  return callUnomi(() => axios.get(`/cxs/rules/${rule}`));
+}
