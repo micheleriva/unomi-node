@@ -1,6 +1,8 @@
-![Apache Unomi](/unomi.png)
+# README
 
-### Getting Stared
+![Apache Unomi](.gitbook/assets/unomi.png)
+
+## Getting Stared
 
 You can install the **Apache Unomi Node.js SDK** using **npm** or **yarn**:
 
@@ -12,7 +14,7 @@ npm install --save unomi-node
 yarn add unomi-node
 ```
 
-### Connect to Unomi
+## Connect to Unomi
 
 You can connect to **Unomi** using the `connect` function:
 
