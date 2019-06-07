@@ -24,6 +24,7 @@ export interface Connection {
     create:             (params: object) => FilteredResponse
   },
   rule: {
-    create:             (params: object) => FilteredResponse
+    create:             (params: object) => FilteredResponse,
+    getAll:             () => FilteredResponse,
   }
 }

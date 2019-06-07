@@ -27,7 +27,8 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
       create: (params: object): FilteredResponse => segment.create(axiosInterface, params)
     },
     rule: {
-      create: (params: object): FilteredResponse => rule.create(axiosInterface, params)
+      create: (params: object): FilteredResponse => rule.create(axiosInterface, params),
+      getAll: (): FilteredResponse => rule.getAll(axiosInterface)
     }
   }
 }
