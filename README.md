@@ -1,3 +1,5 @@
+# README
+
 ![Apache Unomi](.gitbook/assets/unomi.png)
 
 ## Getting Stared
@@ -33,3 +35,4 @@ export default unomi;
 From now, everytime we refer to the variable `unomi`, we're referring to the exported above Unomi instance.
 
 Continue reading on [GitBook](https://micheleriva.gitbook.io/unomi-node/).
+
