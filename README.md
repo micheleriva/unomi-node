@@ -1,4 +1,4 @@
-![unomi.png](https://micheleriva.gitbook.io/unomi-node/)
+![Apache Unomi](/unomi.png)
 
 ### Getting Stared
 
