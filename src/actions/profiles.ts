@@ -79,7 +79,7 @@ export function count(axios: AxiosInstance): FilteredResponse {
  * @function existingProperties
  * @param {AxiosInterface} axios
  * @param {ExistingProperties} params
- * @returns {AxiosRes}
+ * @returns {FilteredResponse}
  */
 
 export function existingProperties(axios: AxiosInstance, params: ExistingProperties): FilteredResponse {
@@ -91,4 +91,23 @@ export function existingProperties(axios: AxiosInstance, params: ExistingPropert
   }
 
   return callUnomi(() => axios.get(`/cxs/profiles/existingProperties?${queryStringify({...params})}`));
+}
+
+/**
+ * @function allProperties
+ * @param {AxiosInterface} axios
+ * @returns {FilteredResponse}
+ */
+
+export function allProperties(axios: AxiosInstance): FilteredResponse {
+  return callUnomi(() => axios.get(`/cxs/profiles/properties`));
+}
+
+export function sessions(axios: AxiosInstance, profileId: string): FilteredResponse {
+
+  if (!profileId) {
+    throw new Error(`Profile ID is not valid. Received: ${profileId}`);
+  }
+
+  return callUnomi(() => axios.get(`/cxs/profiles/${profileId}/sessions`));
 }
