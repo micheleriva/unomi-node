@@ -21,10 +21,10 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
       get:    (profileId: string): FilteredResponse => profile.get(axiosInterface, profileId),
       delete: (profileId: string): FilteredResponse => profile.deleteProfile(axiosInterface, profileId),
       count:  (): FilteredResponse => profile.count(axiosInterface),
-      existingProperties: (params: ProfileTypes.ExistingProperties): FilteredResponse => profile.existingProperties(axiosInterface, params),
-      allProperties:      (): FilteredResponse => profile.allProperties(axiosInterface),
-      sessions:           (profileId: string): FilteredResponse => profile.sessions(axiosInterface, profileId),
-      getByProperty:      (params: ProfileTypes.GetByProperty): FilteredResponse => profile.getByProperty(axiosInterface, params)
+      existingProperties:  (params: ProfileTypes.ExistingProperties): FilteredResponse => profile.existingProperties(axiosInterface, params),
+      allProperties:       (): FilteredResponse => profile.allProperties(axiosInterface),
+      sessions:            (profileId: string): FilteredResponse => profile.sessions(axiosInterface, profileId),
+      getBySingleProperty: (params: ProfileTypes.GetByProperty): FilteredResponse => profile.getBySingleProperty(axiosInterface, params)
     },
     segment: {
       create: (params: object): FilteredResponse => segment.create(axiosInterface, params)

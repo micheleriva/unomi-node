@@ -14,14 +14,14 @@ export interface ConnectionData {
 
 export interface Connection {
   profile: {
-    create:             (profileData: ProfileTypes.CreateProperties) => FilteredResponse;
-    get:                (profileId: string) => FilteredResponse;
-    delete:             (profileId: string) => FilteredResponse;
-    count:              () => FilteredResponse;
-    existingProperties: (params: ProfileTypes.ExistingProperties) => FilteredResponse;
-    allProperties:      () => FilteredResponse;
-    sessions:           (profileId: string) => FilteredResponse;
-    getByProperty:      (params: ProfileTypes.GetByProperty) => FilteredResponse;
+    create:              (profileData: ProfileTypes.CreateProperties) => FilteredResponse;
+    get:                 (profileId: string) => FilteredResponse;
+    delete:              (profileId: string) => FilteredResponse;
+    count:               () => FilteredResponse;
+    existingProperties:  (params: ProfileTypes.ExistingProperties) => FilteredResponse;
+    allProperties:       () => FilteredResponse;
+    sessions:            (profileId: string) => FilteredResponse;
+    getBySingleProperty: (params: ProfileTypes.GetByProperty) => FilteredResponse;
   },
   segment: {
     create:             (params: object) => FilteredResponse

@@ -1,7 +1,7 @@
 import { stringify as queryStringify } from "querystring";
 import { AxiosInstance } from "axios";
 import { validateRequiredProps, callUnomi } from "../utils/index";
-import { queryBuilder } from "../queryBuilder/searchByProperty";
+import { queryBuilder } from "../queryBuilder/profileGetByProperty";
 import { CreateProperties, ExistingProperties, GetByProperty } from "../types/profiles";
 import { FilteredResponse } from "../types/sdkResponse";
 
@@ -127,7 +127,7 @@ export function sessions(axios: AxiosInstance, profileId: string): FilteredRespo
  * @returns {FilteredResponse}
  */
 
-export function getByProperty(axios: AxiosInstance, params: GetByProperty): FilteredResponse {
+export function getBySingleProperty(axios: AxiosInstance, params: GetByProperty): FilteredResponse {
 
   const requiredProperties = ["query", "limit"];
   const propsValidation    = validateRequiredProps(requiredProperties, params);
