@@ -13,7 +13,7 @@ yarn add unomi-node
 ```
 
 # Connect to Unomi
-You can connect to **Unomi** using the `connect` function:	You can connect to **Unomi** using the `connect` function:
+You can connect to **Unomi** using the `connect` function:
 ```javascript
 import unomisdk from "unomi-node";
 
@@ -28,8 +28,7 @@ const unomi = unomisdk.connect({
 export default unomi;
 ```
 
-From now, everytime we refer to the variable `unomi`, we're referring to the exported above Unomi instance.	From now, everytime we refer to the variable `unomi`, we're referring to the exported above Unomi instance.
-
+From now, everytime we refer to the variable `unomi`, we're referring to the exported above Unomi instance.
 Continue reading on [GitBook](https://micheleriva.gitbook.io/unomi-node/)!
 
 # LICENSE
