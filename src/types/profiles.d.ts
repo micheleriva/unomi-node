@@ -17,3 +17,10 @@ export interface ExistingProperties {
     tag:          string;
     isSystemTag?: boolean;
 }
+
+export interface GetByProperty {
+  query:         string;
+  limit?:        number;
+  offset?:       number;
+  forceRefresh?: boolean;
+}

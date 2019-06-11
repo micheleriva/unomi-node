@@ -21,6 +21,7 @@ export interface Connection {
     existingProperties: (params: ProfileTypes.ExistingProperties) => FilteredResponse;
     allProperties:      () => FilteredResponse;
     sessions:           (profileId: string) => FilteredResponse;
+    getByProperty:      (params: ProfileTypes.GetByProperty) => FilteredResponse;
   },
   segment: {
     create:             (params: object) => FilteredResponse

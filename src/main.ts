@@ -23,7 +23,8 @@ export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Con
       count:  (): FilteredResponse => profile.count(axiosInterface),
       existingProperties: (params: ProfileTypes.ExistingProperties): FilteredResponse => profile.existingProperties(axiosInterface, params),
       allProperties:      (): FilteredResponse => profile.allProperties(axiosInterface),
-      sessions:           (profileId: string): FilteredResponse => profile.sessions(axiosInterface, profileId)
+      sessions:           (profileId: string): FilteredResponse => profile.sessions(axiosInterface, profileId),
+      getByProperty:      (params: ProfileTypes.GetByProperty): FilteredResponse => profile.getByProperty(axiosInterface, params)
     },
     segment: {
       create: (params: object): FilteredResponse => segment.create(axiosInterface, params)

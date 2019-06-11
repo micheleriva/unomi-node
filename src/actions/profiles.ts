@@ -1,7 +1,8 @@
 import { stringify as queryStringify } from "querystring";
 import { AxiosInstance } from "axios";
 import { validateRequiredProps, callUnomi } from "../utils/index";
-import { CreateProperties, ExistingProperties } from "../types/profiles";
+import { queryBuilder } from "../queryBuilder/searchByProperty";
+import { CreateProperties, ExistingProperties, GetByProperty } from "../types/profiles";
 import { FilteredResponse } from "../types/sdkResponse";
 
 const defaultProperties: CreateProperties = {
@@ -103,6 +104,13 @@ export function allProperties(axios: AxiosInstance): FilteredResponse {
   return callUnomi(() => axios.get(`/cxs/profiles/properties`));
 }
 
+/**
+ * @function sessions
+ * @param {AxiosInstance} axios 
+ * @param {FilteredResponse} profileId
+ * @returns {FilteredResponse}
+ */
+
 export function sessions(axios: AxiosInstance, profileId: string): FilteredResponse {
 
   if (!profileId) {
@@ -110,4 +118,39 @@ export function sessions(axios: AxiosInstance, profileId: string): FilteredRespo
   }
 
   return callUnomi(() => axios.get(`/cxs/profiles/${profileId}/sessions`));
+}
+
+/**
+ * @function getByProperty
+ * @param {AxiosInstance} axios 
+ * @param {GetByProperty} params
+ * @returns {FilteredResponse}
+ */
+
+export function getByProperty(axios: AxiosInstance, params: GetByProperty): FilteredResponse {
+
+  const requiredProperties = ["query", "limit"];
+  const propsValidation    = validateRequiredProps(requiredProperties, params);
+
+  if (!propsValidation.valid) {
+    throw new Error(`The following properties are missing, null or undefined: ${propsValidation.missing.join(',')}`);
+  }
+
+  const query = queryBuilder(params.query);
+
+  const queryparam = {
+    offset: params.offset || 0,
+    limit:  params.limit  || 100,
+    condition: {
+      type: "profilePropertyCondition",
+      parameterValues: {
+        propertyName: `properties.${query.key}`,
+        comparisonOperator: query.operator,
+        propertyValue: query.value
+      }
+    },
+    forceRefresh: params.forceRefresh || false
+  }
+
+  return callUnomi(() => axios.post(`cxs/profiles/search`, queryparam));
 }

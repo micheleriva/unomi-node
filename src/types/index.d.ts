@@ -3,3 +3,4 @@ export * from "./main.d";
 export * from "./profiles.d";
 export * from "./utils.d";
 export * from "./generics.d";
+export * from "./queryBuilder"
