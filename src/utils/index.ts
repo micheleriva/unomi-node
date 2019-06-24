@@ -1,3 +1,4 @@
+import mjn from "mjn"
 import { FilteredResponse } from "../types/sdkResponse";
 import * as UtilsTypes from "../types/utils.d";
 
@@ -52,15 +53,15 @@ export function callUnomi(axiosInstance: UtilsTypes.callUnomi, method?: string):
       resolve({
         success: (response.status === validStatus),
         status: response.status,
-        data: response.data
+        data: mjn(response, "response.data", null)
       });
 
     } catch (err) {
-      
+
       reject({
         success: false,
-        status: err.response.status,
-        data: err.response.statusText
+        status: mjn(err, "err.response.status", null),
+        data: mjn(err, "err.response.statusText", null)
       });
 
     }

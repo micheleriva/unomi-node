@@ -6,15 +6,15 @@ import { CreateProperties, ExistingProperties, GetByProperty } from "../types/pr
 import { FilteredResponse } from "../types/sdkResponse";
 
 const defaultProperties: CreateProperties = {
+  consents:         {},
   itemId:           undefined,
-  version:          null,
   itemType:         "profile",
-  properties:       undefined,
-  systemProperties: {},
-  segments:         [],
-  scores:           {},
   mergedWith:       null,
-  consents:         {}
+  properties:       undefined,
+  scores:           {},
+  segments:         [],
+  systemProperties: {},
+  version:          null
 };
 
 /**
@@ -32,7 +32,7 @@ export function create(axios: AxiosInstance, properties: CreateProperties): Filt
     throw new Error(`The following properties are missing, null or undefined: ${propsValidation.missing.join(',')}`);
   }
 
-  return callUnomi(() => axios.post(`/cxs/profiles`, Object.assign(defaultProperties, properties)));
+  return callUnomi(() => axios.post(`/cxs/profiles`, {...defaultProperties, ...properties}));
 }
 
 /**

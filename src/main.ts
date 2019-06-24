@@ -1,38 +1,36 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import * as profile from "./actions/profiles";
-import * as segment from "./actions/segments";
-import * as rule from "./actions/rules";
-import * as MainTypes from "./types/main.d";
-import * as ProfileTypes from "./types/profiles";
-import { FilteredResponse } from "./types/sdkResponse";
+import axios, { AxiosInstance }       from "axios";
+import * as profile                   from "./actions/profiles";
+import * as rule                      from "./actions/rules";
+import * as segment                   from "./actions/segments";
+import { Connection, ConnectionData } from "./types/main.d";
 
-export function connect(connectionData: MainTypes.ConnectionData): MainTypes.Connection {
+export function connect(connectionData: ConnectionData): Connection {
   const axiosInterface: AxiosInstance = axios.create({
-    baseURL: connectionData.url,
     auth: {
-      username: connectionData.auth.username,
-      password: connectionData.auth.password
-    }
+      password: connectionData.auth.password,
+      username: connectionData.auth.username
+    },
+    baseURL: connectionData.url,
   })
 
   return {
     profile: {
-      create: (profileData: ProfileTypes.CreateProperties): FilteredResponse => profile.create(axiosInterface, profileData),
-      get:    (profileId: string): FilteredResponse => profile.get(axiosInterface, profileId),
-      delete: (profileId: string): FilteredResponse => profile.deleteProfile(axiosInterface, profileId),
-      count:  (): FilteredResponse => profile.count(axiosInterface),
-      existingProperties:  (params: ProfileTypes.ExistingProperties): FilteredResponse => profile.existingProperties(axiosInterface, params),
-      allProperties:       (): FilteredResponse => profile.allProperties(axiosInterface),
-      sessions:            (profileId: string): FilteredResponse => profile.sessions(axiosInterface, profileId),
-      getBySingleProperty: (params: ProfileTypes.GetByProperty): FilteredResponse => profile.getBySingleProperty(axiosInterface, params)
-    },
-    segment: {
-      create: (params: object): FilteredResponse => segment.create(axiosInterface, params)
+      allProperties:       ()            => profile.allProperties(axiosInterface),
+      count:               ()            => profile.count(axiosInterface),
+      create:              (profileData) => profile.create(axiosInterface, profileData),
+      delete:              (profileId)   => profile.deleteProfile(axiosInterface, profileId),
+      existingProperties:  (params)      => profile.existingProperties(axiosInterface, params),
+      get:                 (profileId)   => profile.get(axiosInterface, profileId),
+      getBySingleProperty: (params)      => profile.getBySingleProperty(axiosInterface, params),
+      sessions:            (profileId)   => profile.sessions(axiosInterface, profileId)
     },
     rule: {
-      create: (params: object): FilteredResponse => rule.create(axiosInterface, params),
-      getAll: (): FilteredResponse => rule.getAll(axiosInterface),
-      get:    (param: string) => rule.get(axiosInterface, param)
+      create: (params) => rule.create(axiosInterface, params),
+      get:    (param)  => rule.get(axiosInterface, param),
+      getAll: ()       => rule.getAll(axiosInterface)
+    },
+    segment: {
+      create: (params) => segment.create(axiosInterface, params)
     }
   }
 }
