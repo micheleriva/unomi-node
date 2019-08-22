@@ -24,3 +24,10 @@ export interface GetByProperty {
   offset?:       number;
   forceRefresh?: boolean;
 }
+
+export interface QueryConfig {
+  limit?:        number;
+  offset?:       number;
+  forceRefresh?: boolean;
+  operator:      "and" | "or";
+}

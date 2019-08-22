@@ -2,8 +2,9 @@ import { stringify as queryStringify } from "querystring";
 import { AxiosInstance } from "axios";
 import { validateRequiredProps, callUnomi } from "../utils/index";
 import { queryBuilder } from "../queryBuilder/profileGetByProperty";
-import { CreateProperties, ExistingProperties, GetByProperty } from "../types/profiles";
+import { CreateProperties, ExistingProperties, GetByProperty, QueryConfig } from "../types/profiles";
 import { FilteredResponse } from "../types/sdkResponse";
+import { QueryParams }  from "../types/queryBuilder"
 
 const defaultProperties: CreateProperties = {
   consents:         {},
@@ -153,4 +154,34 @@ export function getBySingleProperty(axios: AxiosInstance, params: GetByProperty)
   }
 
   return callUnomi(() => axios.post(`cxs/profiles/search`, queryparam));
+}
+
+export function query(axios: AxiosInstance, params: QueryConfig, query: QueryParams[] ): FilteredResponse {
+
+  const subConditions = query.map((queryCond: QueryParams) => {
+    return {
+      type: "profilePropertyCondition",
+      parameterValues: {
+        propertyName:       queryCond.prop,
+        comparisonOperator: queryCond.operator,
+        propertyValue:      queryCond.value
+      }
+    }
+  });
+
+  const fullQuery = {
+    offset: params.offset || 0,
+    limit:  params.limit  || 100,
+    condition: {
+      type: "booleanCondition",
+      parameterValues: {
+        operator: params.operator || "and",
+        subConditions
+      }
+    },
+    forceRefresh: params.forceRefresh || true
+  }
+
+  return callUnomi(() => axios.post(`cxs/profiles/search`, fullQuery));
+
 }

@@ -15,14 +15,15 @@ export function connect(connectionData: ConnectionData): Connection {
 
   return {
     profile: {
-      allProperties:       ()            => profile.allProperties(axiosInterface),
-      count:               ()            => profile.count(axiosInterface),
-      create:              (profileData) => profile.create(axiosInterface, profileData),
-      delete:              (profileId)   => profile.deleteProfile(axiosInterface, profileId),
-      existingProperties:  (params)      => profile.existingProperties(axiosInterface, params),
-      get:                 (profileId)   => profile.get(axiosInterface, profileId),
-      getBySingleProperty: (params)      => profile.getBySingleProperty(axiosInterface, params),
-      sessions:            (profileId)   => profile.sessions(axiosInterface, profileId)
+      allProperties:       ()              => profile.allProperties(axiosInterface),
+      count:               ()              => profile.count(axiosInterface),
+      create:              (profileData)   => profile.create(axiosInterface, profileData),
+      delete:              (profileId)     => profile.deleteProfile(axiosInterface, profileId),
+      existingProperties:  (params)        => profile.existingProperties(axiosInterface, params),
+      get:                 (profileId)     => profile.get(axiosInterface, profileId),
+      getBySingleProperty: (params)        => profile.getBySingleProperty(axiosInterface, params),
+      sessions:            (profileId)     => profile.sessions(axiosInterface, profileId),
+      query:               (params, query) => profile.query(axiosInterface, params, query)
     },
     rule: {
       create: (params) => rule.create(axiosInterface, params),
